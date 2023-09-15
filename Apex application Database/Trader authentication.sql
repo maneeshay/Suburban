@@ -1,0 +1,12 @@
+FUNCTION LOGIN(p_username IN VARCHAR2, p_password IN VARCHAR2) 
+RETURN BOOLEAN 
+AS 
+rst NUMBER := 0; 
+BEGIN 
+SELECT 1 INTO rst FROM USERS
+WHERE UPPER(User_email) = UPPER(p_username) 
+AND User_password = p_password;
+RETURN TRUE; 
+EXCEPTION 
+WHEN NO_DATA_FOUND THEN 
+RETURN FALSE; 
